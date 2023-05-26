@@ -18,7 +18,7 @@ let package = Package(
 //         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher", .exact("5.15.0")),
+        .package(url: "https://github.com/onevcat/Kingfisher", from: "7.7.0"),
         .package(url: "https://github.com/airbnb/lottie-ios.git", .exact("4.0.1")),
     ],
     targets: [
