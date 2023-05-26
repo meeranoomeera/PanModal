@@ -57,12 +57,11 @@
 		DCA741AE216D90410021F2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA741AD216D90410021F2F2 /* AppDelegate.swift */; };
 		DCC0EE7C21917F2500208DBC /* PanModalPresentable+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC0EE7B21917F2500208DBC /* PanModalPresentable+Defaults.swift */; };
 		E70CE8722A207E3A006EDF6F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E70CE8712A207E3A006EDF6F /* Kingfisher */; };
-		E70CE8782A208246006EDF6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E70CE8772A208246006EDF6F /* Lottie */; };
-		E70CE87A2A208259006EDF6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E70CE8792A208259006EDF6F /* Lottie */; };
 		E72954E9292B9B39003D39FC /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72954E8292B9B39003D39FC /* PassthroughView.swift */; };
 		E72954EB292B9B6A003D39FC /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72954E8292B9B39003D39FC /* PassthroughView.swift */; };
 		E74A6E582935302500D9DEE9 /* DropWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74A6E572935302500D9DEE9 /* DropWay.swift */; };
 		E74A6E592935309400D9DEE9 /* DropWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74A6E572935302500D9DEE9 /* DropWay.swift */; };
+		E78325B62A208531003C0600 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E78325B52A208531003C0600 /* Lottie */; };
 		E7A81DB4291934D600910177 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A81DB3291934D600910177 /* KeyboardObserver.swift */; };
 		E7A81DB52919371300910177 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A81DB3291934D600910177 /* KeyboardObserver.swift */; };
 		E7A81DB72919395B00910177 /* KeyboardPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A81DB62919395B00910177 /* KeyboardPolicy.swift */; };
@@ -82,6 +81,7 @@
 		E7F42FF029EED61D00156953 /* PreviewSizeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */; };
 		E7F42FF129EED63800156953 /* PreviewSizeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */; };
 		E7F42FF229EED63800156953 /* PreviewTransitionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */; };
+		E7FCF8782A2085D200438A01 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E7FCF8772A2085D200438A01 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70CE8722A207E3A006EDF6F /* Kingfisher in Frameworks */,
-				E70CE87A2A208259006EDF6F /* Lottie in Frameworks */,
+				E7FCF8782A2085D200438A01 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +204,7 @@
 			files = (
 				E7E45B002A207C810056F6CB /* Kingfisher in Frameworks */,
 				0F2A2C582239C119003BDB2F /* PanModal.framework in Frameworks */,
-				E70CE8782A208246006EDF6F /* Lottie in Frameworks */,
+				E78325B62A208531003C0600 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +525,7 @@
 			name = PanModal;
 			packageProductDependencies = (
 				E70CE8712A207E3A006EDF6F /* Kingfisher */,
-				E70CE8792A208259006EDF6F /* Lottie */,
+				E7FCF8772A2085D200438A01 /* Lottie */,
 			);
 			productName = PanModal;
 			productReference = 0F2A2C512239C119003BDB2F /* PanModal.framework */;
@@ -566,7 +566,7 @@
 			name = PanModalDemo;
 			packageProductDependencies = (
 				E7E45AFF2A207C810056F6CB /* Kingfisher */,
-				E70CE8772A208246006EDF6F /* Lottie */,
+				E78325B52A208531003C0600 /* Lottie */,
 			);
 			productName = PanModal;
 			productReference = DCA741AA216D90410021F2F2 /* PanModalDemo.app */;
@@ -605,7 +605,7 @@
 			mainGroup = DCA741A1216D90410021F2F2;
 			packageReferences = (
 				E7E45AFE2A207C810056F6CB /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				E78325B42A208531003C0600 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = DCA741AB216D90410021F2F2 /* Products */;
 			projectDirPath = "";
@@ -1048,9 +1048,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		E78325B42A208531003C0600 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			repositoryURL = "https://github.com/airbnb/lottie-spm";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.1.3;
@@ -1072,20 +1072,20 @@
 			package = E7E45AFE2A207C810056F6CB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		E70CE8772A208246006EDF6F /* Lottie */ = {
+		E78325B52A208531003C0600 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		E70CE8792A208259006EDF6F /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = E78325B42A208531003C0600 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
 		};
 		E7E45AFF2A207C810056F6CB /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E7E45AFE2A207C810056F6CB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		E7FCF8772A2085D200438A01 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78325B42A208531003C0600 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
