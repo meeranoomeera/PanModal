@@ -82,6 +82,8 @@
 		E7F42FF129EED63800156953 /* PreviewSizeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */; };
 		E7F42FF229EED63800156953 /* PreviewTransitionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */; };
 		E7FCF8782A2085D200438A01 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E7FCF8772A2085D200438A01 /* Lottie */; };
+		E7FCF88A2A20D9CD00438A01 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF8892A20D9CD00438A01 /* UIColor+.swift */; };
+		E7FCF88B2A20D9E800438A01 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF8892A20D9CD00438A01 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +181,7 @@
 		E7D573EB29E4340300E699EF /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewTransitionOption.swift; sourceTree = "<group>"; };
 		E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewSizeOption.swift; sourceTree = "<group>"; };
+		E7FCF8892A20D9CD00438A01 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +325,7 @@
 		DC139062216D9431007A3E64 /* PanModal */ = {
 			isa = PBXGroup;
 			children = (
+				E7FCF8882A20D9CD00438A01 /* Extensions */,
 				E7A81DB2291934D000910177 /* Utils */,
 				DC139065216D9458007A3E64 /* Animator */,
 				DC13906B216D9458007A3E64 /* Controller */,
@@ -492,6 +496,14 @@
 				E7C0839D29D2CA7B0093E82D /* PreviewViewController.swift */,
 			);
 			path = Preview;
+			sourceTree = "<group>";
+		};
+		E7FCF8882A20D9CD00438A01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E7FCF8892A20D9CD00438A01 /* UIColor+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -667,6 +679,7 @@
 				0F2A2C652239C151003BDB2F /* PanModalPresentable+UIViewController.swift in Sources */,
 				0F2A2C662239C153003BDB2F /* PanModalPresentable+LayoutHelpers.swift in Sources */,
 				0F2A2C672239C157003BDB2F /* PanModalPresenter.swift in Sources */,
+				E7FCF88A2A20D9CD00438A01 /* UIColor+.swift in Sources */,
 				0F2A2C682239C15D003BDB2F /* UIViewController+PanModalPresenter.swift in Sources */,
 				E7C43D0229D47A3700201106 /* PreviewContainerView.swift in Sources */,
 				0F2A2C692239C162003BDB2F /* DimmedView.swift in Sources */,
@@ -724,6 +737,7 @@
 				74C072A7220BA78800124CE1 /* PanModalPresentable+LayoutHelpers.swift in Sources */,
 				DC139075216D9458007A3E64 /* DimmedView.swift in Sources */,
 				743CABD322265F2E00634A5A /* ProfileViewController.swift in Sources */,
+				E7FCF88B2A20D9E800438A01 /* UIColor+.swift in Sources */,
 				E7F42FF129EED63800156953 /* PreviewSizeOption.swift in Sources */,
 				DC139070216D9458007A3E64 /* PanModalPresentationAnimator.swift in Sources */,
 				E7C43D0729D4DAEF00201106 /* PreviewContainerView.swift in Sources */,
