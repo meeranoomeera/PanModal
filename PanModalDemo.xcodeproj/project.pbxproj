@@ -57,12 +57,12 @@
 		DCA741AE216D90410021F2F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA741AD216D90410021F2F2 /* AppDelegate.swift */; };
 		DCC0EE7C21917F2500208DBC /* PanModalPresentable+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC0EE7B21917F2500208DBC /* PanModalPresentable+Defaults.swift */; };
 		E70CE8722A207E3A006EDF6F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E70CE8712A207E3A006EDF6F /* Kingfisher */; };
+		E70CE8782A208246006EDF6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E70CE8772A208246006EDF6F /* Lottie */; };
+		E70CE87A2A208259006EDF6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E70CE8792A208259006EDF6F /* Lottie */; };
 		E72954E9292B9B39003D39FC /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72954E8292B9B39003D39FC /* PassthroughView.swift */; };
 		E72954EB292B9B6A003D39FC /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72954E8292B9B39003D39FC /* PassthroughView.swift */; };
-		E74A0ABA29E96FA000BAD652 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E74A0AB929E96FA000BAD652 /* Lottie */; };
 		E74A6E582935302500D9DEE9 /* DropWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74A6E572935302500D9DEE9 /* DropWay.swift */; };
 		E74A6E592935309400D9DEE9 /* DropWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74A6E572935302500D9DEE9 /* DropWay.swift */; };
-		E756318829E9904100BE0BBD /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E756318729E9904100BE0BBD /* Lottie */; };
 		E7A81DB4291934D600910177 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A81DB3291934D600910177 /* KeyboardObserver.swift */; };
 		E7A81DB52919371300910177 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A81DB3291934D600910177 /* KeyboardObserver.swift */; };
 		E7A81DB72919395B00910177 /* KeyboardPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A81DB62919395B00910177 /* KeyboardPolicy.swift */; };
@@ -187,7 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70CE8722A207E3A006EDF6F /* Kingfisher in Frameworks */,
-				E74A0ABA29E96FA000BAD652 /* Lottie in Frameworks */,
+				E70CE87A2A208259006EDF6F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +204,7 @@
 			files = (
 				E7E45B002A207C810056F6CB /* Kingfisher in Frameworks */,
 				0F2A2C582239C119003BDB2F /* PanModal.framework in Frameworks */,
-				E756318829E9904100BE0BBD /* Lottie in Frameworks */,
+				E70CE8782A208246006EDF6F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,8 +524,8 @@
 			);
 			name = PanModal;
 			packageProductDependencies = (
-				E74A0AB929E96FA000BAD652 /* Lottie */,
 				E70CE8712A207E3A006EDF6F /* Kingfisher */,
+				E70CE8792A208259006EDF6F /* Lottie */,
 			);
 			productName = PanModal;
 			productReference = 0F2A2C512239C119003BDB2F /* PanModal.framework */;
@@ -565,8 +565,8 @@
 			);
 			name = PanModalDemo;
 			packageProductDependencies = (
-				E756318729E9904100BE0BBD /* Lottie */,
 				E7E45AFF2A207C810056F6CB /* Kingfisher */,
+				E70CE8772A208246006EDF6F /* Lottie */,
 			);
 			productName = PanModal;
 			productReference = DCA741AA216D90410021F2F2 /* PanModalDemo.app */;
@@ -604,8 +604,8 @@
 			);
 			mainGroup = DCA741A1216D90410021F2F2;
 			packageReferences = (
-				E74A0AB629E96F8800BAD652 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				E7E45AFE2A207C810056F6CB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = DCA741AB216D90410021F2F2 /* Products */;
 			projectDirPath = "";
@@ -1048,12 +1048,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E74A0AB629E96F8800BAD652 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
-				kind = exactVersion;
-				version = 4.0.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.3;
 			};
 		};
 		E7E45AFE2A207C810056F6CB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1072,14 +1072,14 @@
 			package = E7E45AFE2A207C810056F6CB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		E74A0AB929E96FA000BAD652 /* Lottie */ = {
+		E70CE8772A208246006EDF6F /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E74A0AB629E96F8800BAD652 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		E756318729E9904100BE0BBD /* Lottie */ = {
+		E70CE8792A208259006EDF6F /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E74A0AB629E96F8800BAD652 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = E70CE8762A208246006EDF6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 		E7E45AFF2A207C810056F6CB /* Kingfisher */ = {
