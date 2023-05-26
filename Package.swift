@@ -26,7 +26,7 @@ let package = Package(
             name: "PanModal",
             dependencies: [
                 .product(name: "Kingfisher", package: "Kingfisher"),
-                .product(name: "Lottie", package: "lottie-ios"),
+                .product(name: "Lottie", package: "lottie-spm"),
             ],
             path: "PanModal")
     ],
