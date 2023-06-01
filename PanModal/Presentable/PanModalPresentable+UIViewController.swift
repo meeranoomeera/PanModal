@@ -25,7 +25,7 @@ public extension PanModalPresentable where Self: UIViewController {
 	/**
 	 A value of last selected anchor
 	 */
-	var lastState: PanModalPresentationController.PresentationState {
+	var panModalLastState: PanModalPresentationController.PresentationState {
 		presentedVC?.lastState ?? .shortForm
 	}
 
