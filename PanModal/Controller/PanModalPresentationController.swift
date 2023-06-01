@@ -47,6 +47,11 @@ open class PanModalPresentationController: UIPresentationController {
 
     // MARK: - Properties
 
+	/**
+	 A value of last selected anchor
+	 */
+	internal var lastState: PresentationState = .shortForm
+
     /**
      A flag to track if the presented view is animating
      */
@@ -286,8 +291,10 @@ public extension PanModalPresentationController {
 
         switch state {
         case .shortForm:
+					lastState = .shortForm
 			snap(toYPosition: shortFormYPosition, animated: animated)
         case .longForm:
+					lastState = .longForm
 			snap(toYPosition: longFormYPosition, animated: animated)
         }
     }
@@ -1096,6 +1103,7 @@ private extension PanModalPresentationController {
             presentedView.frame.origin.y = longFormYPosition - yOffset
         } else {
             scrollViewYOffset = 0
+					lastState = .longForm
             snap(toYPosition: longFormYPosition)
         }
 

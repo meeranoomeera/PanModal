@@ -22,6 +22,13 @@ public extension PanModalPresentable where Self: UIViewController {
      */
     typealias LayoutType = UIViewController & PanModalPresentable
 
+	/**
+	 A value of last selected anchor
+	 */
+	var lastState: PanModalPresentationController.PresentationState {
+		presentedVC?.lastState ?? .shortForm
+	}
+
     /**
      A function wrapper over the `transition(to state: PanModalPresentationController.PresentationState)`
      function in the PanModalPresentationController.
