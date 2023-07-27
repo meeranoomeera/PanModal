@@ -18,15 +18,15 @@ let package = Package(
 //         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher", .exact("5.15.0")),
-        .package(url: "https://github.com/airbnb/lottie-ios.git", .exact("4.0.1")),
+        .package(url: "https://github.com/onevcat/Kingfisher", from: "7.7.0"),
+        .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.1.3"),
     ],
     targets: [
         .target(
             name: "PanModal",
             dependencies: [
                 .product(name: "Kingfisher", package: "Kingfisher"),
-                .product(name: "Lottie", package: "lottie-ios"),
+                .product(name: "Lottie", package: "lottie-spm"),
             ],
             path: "PanModal")
     ],
