@@ -30,7 +30,7 @@ public extension PanModalPresentable where Self: UIViewController {
 		 .viewToViewOut
 		]
 	}
-
+    
     var topOffset: CGFloat {
         return topLayoutOffset + 21.0
     }
@@ -69,14 +69,6 @@ public extension PanModalPresentable where Self: UIViewController {
         return UIColor(hex: 0x9DA3AA).withAlphaComponent(0.8)
     }
 
-	var panModalBackgroundColorFormed: PanModalFormParameter<UIColor>? {
-		return nil
-	}
-
-	var panModalShadow: PanModalFormParameter<PanModalShadow>? {
-		return nil
-	}
-
     var dragIndicatorBackgroundColor: UIColor {
 		return UIColor(hex: 0xE1E4E6)
     }
@@ -110,10 +102,6 @@ public extension PanModalPresentable where Self: UIViewController {
     var isUserInteractionEnabled: Bool {
         return true
     }
-
-	var touchDelegate: UIView? {
-		return nil
-	}
 
     var isHapticFeedbackEnabled: Bool {
         return true

@@ -47,11 +47,6 @@ open class PanModalPresentationController: UIPresentationController {
 
     // MARK: - Properties
 
-	/**
-	 A value of last selected anchor
-	 */
-	internal var lastState: PresentationState = .shortForm
-
     /**
      A flag to track if the presented view is animating
      */
@@ -127,7 +122,6 @@ open class PanModalPresentationController: UIPresentationController {
                 self?.presentedViewController.dismiss(animated: true)
             }
         }
-			view.touchDelegate = presentable?.touchDelegate
         return view
     }()
 
@@ -142,12 +136,12 @@ open class PanModalPresentationController: UIPresentationController {
     }()
     
 	private lazy var visibleContainer: UIView = {
-		let view = PassthroughView()
-		view.clipsToBounds = true
-		view.layer.cornerRadius = presentable?.cornerRadius ?? 0
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
+        let view = PassthroughView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = presentable?.cornerRadius ?? 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
 	private lazy var previewContainer: PreviewContainerView = {
 		let view = PreviewContainerView()
@@ -291,10 +285,8 @@ public extension PanModalPresentationController {
 
         switch state {
         case .shortForm:
-					lastState = .shortForm
 			snap(toYPosition: shortFormYPosition, animated: animated)
         case .longForm:
-					lastState = .longForm
 			snap(toYPosition: longFormYPosition, animated: animated)
         }
     }
@@ -647,17 +639,6 @@ private extension PanModalPresentationController {
         extendsPanScrolling = layoutPresentable.allowsExtendedPanScrolling
 
         containerView?.isUserInteractionEnabled = layoutPresentable.isUserInteractionEnabled
-
-			if let container = containerView,
-				 let shadow = presentable?.panModalShadow,
-				 let currentShadow = getValue(from: shadow) {
-				currentShadow.apply(container.layer)
-			}
-
-			if let backgroundFormed = presentable?.panModalBackgroundColorFormed,
-				 let currentBackground = getValue(from: backgroundFormed) {
-				backgroundView.backgroundColor = currentBackground
-			}
     }
 
     /**
@@ -957,27 +938,6 @@ private extension PanModalPresentationController {
             else { return number }
         return nearestVal
     }
-
-	func getValue<T: PanModalMixable>(from parameter: PanModalFormParameter<T>) -> T? {
-		guard shortFormYPosition != longFormYPosition else {
-			return parameter.longFormValue
-		}
-		
-		let current = presentedView.frame.minY
-		if current > shortFormYPosition {
-			return parameter.shortFormValue
-		} else if current < longFormYPosition {
-			return parameter.longFormValue
-		} else if let longMixed = parameter.longFormValue as? T.MixedType {
-			let percent = (current - shortFormYPosition) / (longFormYPosition - shortFormYPosition)
-			return parameter.shortFormValue.mix(
-				with: longMixed,
-				percent: percent
-			) as? T
-		}
-
-		return nil
-	}
 }
 
 // MARK: - UIScrollView Observer
@@ -1103,7 +1063,6 @@ private extension PanModalPresentationController {
             presentedView.frame.origin.y = longFormYPosition - yOffset
         } else {
             scrollViewYOffset = 0
-					lastState = .longForm
             snap(toYPosition: longFormYPosition)
         }
 

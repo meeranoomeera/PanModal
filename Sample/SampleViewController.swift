@@ -129,8 +129,7 @@ extension RowPresentable {
 private extension SampleViewController {
 
     enum RowType: Int, CaseIterable {
-			case basic
-			case shadow
+        case basic
         case fullScreen
         case alert
         case transientAlert
@@ -145,8 +144,7 @@ private extension SampleViewController {
 
         var presentable: RowPresentable {
             switch self {
-						case .basic: return Basic()
-						case .shadow: return Shadow()
+            case .basic: return Basic()
             case .fullScreen: return FullScreen()
             case .alert: return Alert()
             case .transientAlert: return TransientAlert()
@@ -164,11 +162,6 @@ private extension SampleViewController {
             let string: String = "Basic"
             let rowVC: PanModalPresentable.LayoutType = BasicViewController()
         }
-
-			struct Shadow: RowPresentable {
-					let string: String = "Shadow"
-					let rowVC: PanModalPresentable.LayoutType = ShadowViewController()
-			}
 
         struct FullScreen: RowPresentable {
             let string: String = "Full Screen"
