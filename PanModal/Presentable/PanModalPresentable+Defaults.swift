@@ -50,7 +50,7 @@ public extension PanModalPresentable where Self: UIViewController {
     }
 
     var cornerRadius: CGFloat {
-        return 16.0
+		return 8.0
     }
 
     var springDamping: CGFloat {
@@ -66,7 +66,7 @@ public extension PanModalPresentable where Self: UIViewController {
     }
 
     var panModalBackgroundColor: UIColor {
-        return UIColor(hex: 0x9DA3AA).withAlphaComponent(0.8)
+		return UIColor.black.withAlphaComponent(0.7)
     }
 
 	var panModalBackgroundColorFormed: PanModalFormParameter<UIColor>? {
@@ -78,7 +78,7 @@ public extension PanModalPresentable where Self: UIViewController {
 	}
 
     var dragIndicatorBackgroundColor: UIColor {
-		return UIColor(hex: 0xE1E4E6)
+		return UIColor.lightGray
     }
 
     var scrollIndicatorInsets: UIEdgeInsets {
