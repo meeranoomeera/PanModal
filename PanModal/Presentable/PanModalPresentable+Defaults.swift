@@ -126,7 +126,15 @@ public extension PanModalPresentable where Self: UIViewController {
     var showDragIndicator: Bool {
         return shouldRoundTopCorners
     }
+	
+	var dragIndicatorSize: CGSize {
+		return .init(width: 36, height: 5)
+	}
 
+	var indicatorYOffset: CGFloat {
+		return 8
+	}
+	
 	var keyboardPolicy: KeyboardPolicy {
 		return .switchToLongForm
 	}

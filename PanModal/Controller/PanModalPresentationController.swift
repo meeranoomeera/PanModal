@@ -39,9 +39,9 @@ open class PanModalPresentationController: UIPresentationController {
      Constants
      */
     struct Constants {
-        static let indicatorYOffset = CGFloat(-11)
+        static let indicatorYOffset = CGFloat(8)
         static let snapMovementSensitivity = CGFloat(0.7)
-        static let dragIndicatorSize = CGSize(width: 80.0, height: 3.0)
+		static let dragIndicatorSize = CGSize(width: 36.0, height: 5.0)
 		static let previewContainerBottomSpacing = CGFloat(30.0)
     }
 
@@ -162,7 +162,7 @@ open class PanModalPresentationController: UIPresentationController {
     private lazy var dragIndicatorView: UIView = {
         let view = UIView()
         view.backgroundColor = presentable?.dragIndicatorBackgroundColor
-        view.layer.cornerRadius = Constants.dragIndicatorSize.height / 2.0
+		view.layer.cornerRadius = (presentable?.dragIndicatorSize.height ?? Constants.dragIndicatorSize.height) / 2.0
         return view
     }()
 
@@ -627,10 +627,10 @@ private extension PanModalPresentationController {
     func addDragIndicatorView(to view: UIView) {
         view.addSubview(dragIndicatorView)
         dragIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        dragIndicatorView.topAnchor.constraint(equalTo: view.topAnchor, constant: -Constants.indicatorYOffset).isActive = true
+		dragIndicatorView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -(presentable?.indicatorYOffset ?? Constants.indicatorYOffset)).isActive = true
         dragIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        dragIndicatorView.widthAnchor.constraint(equalToConstant: Constants.dragIndicatorSize.width).isActive = true
-        dragIndicatorView.heightAnchor.constraint(equalToConstant: Constants.dragIndicatorSize.height).isActive = true
+        dragIndicatorView.widthAnchor.constraint(equalToConstant: presentable?.dragIndicatorSize.width ?? Constants.dragIndicatorSize.width).isActive = true
+        dragIndicatorView.heightAnchor.constraint(equalToConstant: presentable?.dragIndicatorSize.height ?? Constants.dragIndicatorSize.height).isActive = true
     }
 
     /**
@@ -1147,9 +1147,10 @@ private extension PanModalPresentationController {
                                 cornerRadii: CGSize(width: radius, height: radius))
 
         // Draw around the drag indicator view, if displayed
-        if presentable?.showDragIndicator == true {
+        if presentable?.showDragIndicator == true,
+		   presentable?.indicatorYOffset ?? Constants.indicatorYOffset >= 0 {
             let indicatorLeftEdgeXPos = view.bounds.width/2.0 - Constants.dragIndicatorSize.width/2.0
-//            drawAroundDragIndicator(currentPath: path, indicatorLeftEdgeXPos: indicatorLeftEdgeXPos)
+            drawAroundDragIndicator(currentPath: path, indicatorLeftEdgeXPos: indicatorLeftEdgeXPos)
         }
 
         // Set path as a mask to display optional drag indicator view & rounded corners
@@ -1167,12 +1168,12 @@ private extension PanModalPresentationController {
      */
     func drawAroundDragIndicator(currentPath path: UIBezierPath, indicatorLeftEdgeXPos: CGFloat) {
 
-        let totalIndicatorOffset = Constants.indicatorYOffset + Constants.dragIndicatorSize.height
+		let totalIndicatorOffset = (presentable?.indicatorYOffset ?? Constants.indicatorYOffset) + (presentable?.dragIndicatorSize.height ?? Constants.dragIndicatorSize.height)
 
         // Draw around drag indicator starting from the left
         path.addLine(to: CGPoint(x: indicatorLeftEdgeXPos, y: path.currentPoint.y))
         path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y - totalIndicatorOffset))
-        path.addLine(to: CGPoint(x: path.currentPoint.x + Constants.dragIndicatorSize.width, y: path.currentPoint.y))
+        path.addLine(to: CGPoint(x: path.currentPoint.x + (presentable?.dragIndicatorSize.width ?? Constants.dragIndicatorSize.width), y: path.currentPoint.y))
         path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y + totalIndicatorOffset))
     }
 }

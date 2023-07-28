@@ -131,6 +131,21 @@ public protocol PanModalPresentable: AnyObject {
     */
     var dragIndicatorBackgroundColor: UIColor { get }
 
+	/**
+	 The drag indicator view size.
+
+	 Default value is 36.0 х 5.0
+	*/
+	var dragIndicatorSize: CGSize { get }
+	
+	/**
+	 The drag indicator view Y offset.
+
+	 Default value is 8
+	*/
+	var indicatorYOffset: CGFloat { get }
+	
+	
     /**
      We configure the panScrollable's scrollIndicatorInsets interally so override this value
      to set custom insets.
