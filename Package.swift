@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -8,27 +8,23 @@ let package = Package(
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "PanModal",
+            name: "PanModal", 
+            type: .dynamic, 
             targets: ["PanModal"]
         ),
-//         .library(
-//             name: "PanModal", 
-//             type: .dynamic, 
-//             targets: ["PanModal"]
-//         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher", from: "7.7.0"),
+        .package(url: "https://git.nomera.com/Deni/kingfisher-wrapper-ios", branch: "master"),
         .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.1.3"),
     ],
     targets: [
         .target(
             name: "PanModal",
             dependencies: [
-                .product(name: "Kingfisher", package: "Kingfisher"),
+                .product(name: "KingfisherWrapper", package: "kingfisher-wrapper-ios"),
                 .product(name: "Lottie", package: "lottie-spm"),
             ],
             path: "PanModal")
     ],
-    swiftLanguageVersions: [.version("5.0")]
+    swiftLanguageVersions: [.version("5.7")]
 )
