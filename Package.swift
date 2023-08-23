@@ -15,14 +15,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://git.nomera.com/Deni/kingfisher-wrapper-ios", branch: "master"),
-        .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.1.3"),
+        .package(url: "https://git.nomera.com/Deni/lottie-wrapper-ios", branch: "main"),
     ],
     targets: [
         .target(
             name: "PanModal",
             dependencies: [
                 .product(name: "KingfisherWrapper", package: "kingfisher-wrapper-ios"),
-                .product(name: "Lottie", package: "lottie-spm"),
+                .product(name: "LottieWrapper", package: "lottie-wrapper-ios"),
             ],
             path: "PanModal")
     ],
