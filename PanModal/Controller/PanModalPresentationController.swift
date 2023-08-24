@@ -203,6 +203,14 @@ open class PanModalPresentationController: UIPresentationController {
 
         guard let containerView = containerView
             else { return }
+		let insets = presentable?.panContainerInsets.insets ?? .zero
+		
+		containerView.frame = CGRect(
+			x: insets.left,
+			y: insets.top,
+			width: containerView.frame.width - insets.left - insets.right,
+			height: containerView.frame.height - insets.top - insets.bottom
+		)
 
         layoutBackgroundView(in: containerView)
         layoutPresentedView(in: containerView)
@@ -546,7 +554,8 @@ private extension PanModalPresentationController {
             let yPosition = panFrame.origin.y - panFrame.height + frame.height
             presentedView.frame.origin.y = max(yPosition, anchoredYPosition)
         }
-        panContainerView.frame.origin.x = frame.origin.x
+		panContainerView.frame.origin.x = frame.origin.x
+		- (presentable?.panContainerInsets.insets.left ?? .zero)
 		let topOffset = presentable?.topOffset ?? 0
 		previewContainer.frame = .init(
 			origin: .init(x: 0, y: topOffset),
@@ -602,12 +611,26 @@ private extension PanModalPresentationController {
      & configures its layout constraints.
      */
     func layoutBackgroundView(in containerView: UIView) {
+		let insets = presentable?.panContainerInsets.insets ?? .zero
+		
         containerView.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        backgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        backgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        backgroundView.topAnchor.constraint(
+			equalTo: containerView.topAnchor,
+			constant: -insets.top
+		).isActive = true
+        backgroundView.leadingAnchor.constraint(
+			equalTo: containerView.leadingAnchor,
+			constant: -insets.left
+		).isActive = true
+        backgroundView.trailingAnchor.constraint(
+			equalTo: containerView.trailingAnchor,
+			constant: insets.right
+		).isActive = true
+        backgroundView.bottomAnchor.constraint(
+			equalTo: containerView.bottomAnchor,
+			constant: insets.bottom
+		).isActive = true
     }
 
 	func layoutVisibleView(in containerView: UIView) {

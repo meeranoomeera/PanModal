@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05E0DBA22A97734D00A7AEA6 /* PanContainerInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */; };
+		05E0DBA32A97735700A7AEA6 /* PanContainerInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */; };
 		0F2A2C552239C119003BDB2F /* PanModal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F2A2C532239C119003BDB2F /* PanModal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F2A2C582239C119003BDB2F /* PanModal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2A2C512239C119003BDB2F /* PanModal.framework */; };
 		0F2A2C592239C119003BDB2F /* PanModal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2A2C512239C119003BDB2F /* PanModal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -81,6 +83,9 @@
 		E7F42FF029EED61D00156953 /* PreviewSizeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */; };
 		E7F42FF129EED63800156953 /* PreviewSizeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */; };
 		E7F42FF229EED63800156953 /* PreviewTransitionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */; };
+		E7FCF8782A2085D200438A01 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E7FCF8772A2085D200438A01 /* Lottie */; };
+		E7FCF88A2A20D9CD00438A01 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF8892A20D9CD00438A01 /* UIColor+.swift */; };
+		E7FCF88B2A20D9E800438A01 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF8892A20D9CD00438A01 /* UIColor+.swift */; };
 		FF4A4F962A25F71C006860CC /* PanModalShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A4F952A25F71C006860CC /* PanModalShadow.swift */; };
 		FF4A4F972A25F71C006860CC /* PanModalShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A4F952A25F71C006860CC /* PanModalShadow.swift */; };
 		FF4A4F992A260B66006860CC /* PanModalFormParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A4F982A260B66006860CC /* PanModalFormParameter.swift */; };
@@ -88,9 +93,6 @@
 		FF4A4F9D2A2617B1006860CC /* ShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A4F9C2A2617B1006860CC /* ShadowViewController.swift */; };
 		FF4A4F9F2A26216D006860CC /* PanModalMixable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A4F9E2A26216D006860CC /* PanModalMixable.swift */; };
 		FF4A4FA02A26216D006860CC /* PanModalMixable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4A4F9E2A26216D006860CC /* PanModalMixable.swift */; };
-		E7FCF8782A2085D200438A01 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E7FCF8772A2085D200438A01 /* Lottie */; };
-		E7FCF88A2A20D9CD00438A01 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF8892A20D9CD00438A01 /* UIColor+.swift */; };
-		E7FCF88B2A20D9E800438A01 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF8892A20D9CD00438A01 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanContainerInsets.swift; sourceTree = "<group>"; };
 		0F2A2C512239C119003BDB2F /* PanModal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanModal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2A2C532239C119003BDB2F /* PanModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanModal.h; sourceTree = "<group>"; };
 		0F2A2C542239C119003BDB2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,11 +191,11 @@
 		E7D573EB29E4340300E699EF /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewTransitionOption.swift; sourceTree = "<group>"; };
 		E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewSizeOption.swift; sourceTree = "<group>"; };
+		E7FCF8892A20D9CD00438A01 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		FF4A4F952A25F71C006860CC /* PanModalShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalShadow.swift; sourceTree = "<group>"; };
 		FF4A4F982A260B66006860CC /* PanModalFormParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalFormParameter.swift; sourceTree = "<group>"; };
 		FF4A4F9C2A2617B1006860CC /* ShadowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViewController.swift; sourceTree = "<group>"; };
 		FF4A4F9E2A26216D006860CC /* PanModalMixable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalMixable.swift; sourceTree = "<group>"; };
-		E7FCF8892A20D9CD00438A01 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +384,7 @@
 				E7F42FEE29EED61C00156953 /* PreviewSizeOption.swift */,
 				E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */,
 				E74A6E572935302500D9DEE9 /* DropWay.swift */,
+				05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */,
 			);
 			path = Presentable;
 			sourceTree = "<group>";
@@ -513,20 +517,20 @@
 			path = Preview;
 			sourceTree = "<group>";
 		};
-		FF4A4F9B2A261790006860CC /* Shadow */ = {
-			isa = PBXGroup;
-			children = (
-				FF4A4F9C2A2617B1006860CC /* ShadowViewController.swift */,
-			);
-			path = Shadow;
-			sourceTree = "<group>";
-		};
 		E7FCF8882A20D9CD00438A01 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E7FCF8892A20D9CD00438A01 /* UIColor+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FF4A4F9B2A261790006860CC /* Shadow */ = {
+			isa = PBXGroup;
+			children = (
+				FF4A4F9C2A2617B1006860CC /* ShadowViewController.swift */,
+			);
+			path = Shadow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -697,6 +701,7 @@
 				FF4A4F972A25F71C006860CC /* PanModalShadow.swift in Sources */,
 				0F2A2C622239C148003BDB2F /* PanModalHeight.swift in Sources */,
 				E7F42FEF29EED61C00156953 /* PreviewTransitionOption.swift in Sources */,
+				05E0DBA22A97734D00A7AEA6 /* PanContainerInsets.swift in Sources */,
 				E7D573EC29E4340300E699EF /* PlayerView.swift in Sources */,
 				0F2A2C632239C14B003BDB2F /* PanModalPresentable.swift in Sources */,
 				E7A81DB72919395B00910177 /* KeyboardPolicy.swift in Sources */,
@@ -753,6 +758,7 @@
 				FF4A4F9F2A26216D006860CC /* PanModalMixable.swift in Sources */,
 				E7B4AE4029DEF043000B6F02 /* GifTableViewCell.swift in Sources */,
 				E7D573ED29E4361100E699EF /* PlayerView.swift in Sources */,
+				05E0DBA32A97735700A7AEA6 /* PanContainerInsets.swift in Sources */,
 				E7EE4E07291E5E5100627C80 /* KeyboardPolicy.swift in Sources */,
 				743CABB22225FD1100634A5A /* UserGroupHeaderView.swift in Sources */,
 				DC139072216D9458007A3E64 /* PanModalPresentable+UIViewController.swift in Sources */,
@@ -856,7 +862,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -876,7 +882,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
