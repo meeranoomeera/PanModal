@@ -49,6 +49,10 @@ class NavigationController: UINavigationController, PanModalPresentable {
     var shortFormHeight: PanModalHeight {
         return longFormHeight
     }
+	
+	var panContainerInsets: PanContainerInsets {
+		return .custom(UIEdgeInsets(top: 50, left: 20, bottom: 20, right: 20))
+	}
 }
 
 private class NavUserGroups: UserGroupViewController {

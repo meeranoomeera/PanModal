@@ -141,7 +141,7 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 		return tableView
 	}
 
-	
+
 
 	var shortFormHeight: PanModalHeight {
 		return isShortFormEnabled ? .contentHeight(300.0) : longFormHeight
@@ -149,6 +149,10 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 
 	var longFormHeight: PanModalHeight {
 		.maxHeight
+	}
+	
+	var panContainerInsets: PanContainerInsets {
+		return .custom(UIEdgeInsets(top: 50, left: 20, bottom: 0, right: 20))
 	}
 
 	var scrollIndicatorInsets: UIEdgeInsets {

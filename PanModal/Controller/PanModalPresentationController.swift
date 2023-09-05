@@ -203,6 +203,14 @@ open class PanModalPresentationController: UIPresentationController {
 
         guard let containerView = containerView
             else { return }
+		let insets = presentable?.panContainerInsets.insets ?? .zero
+		
+		containerView.frame = CGRect(
+			x: insets.left,
+			y: insets.top,
+			width: containerView.frame.width - insets.left - insets.right,
+			height: containerView.frame.height - insets.top - insets.bottom
+		)
 
         layoutBackgroundView(in: containerView)
         layoutPresentedView(in: containerView)
@@ -546,7 +554,7 @@ private extension PanModalPresentationController {
             let yPosition = panFrame.origin.y - panFrame.height + frame.height
             presentedView.frame.origin.y = max(yPosition, anchoredYPosition)
         }
-        panContainerView.frame.origin.x = frame.origin.x
+
 		let topOffset = presentable?.topOffset ?? 0
 		previewContainer.frame = .init(
 			origin: .init(x: 0, y: topOffset),
@@ -602,12 +610,26 @@ private extension PanModalPresentationController {
      & configures its layout constraints.
      */
     func layoutBackgroundView(in containerView: UIView) {
+		let insets = presentable?.panContainerInsets.insets ?? .zero
+		
         containerView.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        backgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        backgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        backgroundView.topAnchor.constraint(
+			equalTo: containerView.topAnchor,
+			constant: -insets.top
+		).isActive = true
+        backgroundView.leadingAnchor.constraint(
+			equalTo: containerView.leadingAnchor,
+			constant: -insets.left
+		).isActive = true
+        backgroundView.trailingAnchor.constraint(
+			equalTo: containerView.trailingAnchor,
+			constant: insets.right
+		).isActive = true
+        backgroundView.bottomAnchor.constraint(
+			equalTo: containerView.bottomAnchor,
+			constant: insets.bottom
+		).isActive = true
     }
 
 	func layoutVisibleView(in containerView: UIView) {
@@ -1142,16 +1164,20 @@ private extension PanModalPresentationController {
      */
     func addRoundedCorners(to view: UIView) {
         let radius = presentable?.cornerRadius ?? 0
-        let path = UIBezierPath(roundedRect: view.bounds,
-                                byRoundingCorners: [.topLeft, .topRight],
-                                cornerRadii: CGSize(width: radius, height: radius))
-
+		let path = UIBezierPath(
+			roundedRect: view.bounds,
+			byRoundingCorners: [.topLeft, .topRight],
+			cornerRadii: CGSize(width: radius, height: radius)
+		)
+		
         // Draw around the drag indicator view, if displayed
         if presentable?.showDragIndicator == true,
 		   presentable?.indicatorYOffset ?? Constants.indicatorYOffset >= 0 {
             let indicatorLeftEdgeXPos = view.bounds.width/2.0 - Constants.dragIndicatorSize.width/2.0
             drawAroundDragIndicator(currentPath: path, indicatorLeftEdgeXPos: indicatorLeftEdgeXPos)
         }
+
+		unmaskAllFromTop(view: view, currentPath: path)
 
         // Set path as a mask to display optional drag indicator view & rounded corners
         let mask = CAShapeLayer()
@@ -1176,6 +1202,18 @@ private extension PanModalPresentationController {
         path.addLine(to: CGPoint(x: path.currentPoint.x + (presentable?.dragIndicatorSize.width ?? Constants.dragIndicatorSize.width), y: path.currentPoint.y))
         path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y + totalIndicatorOffset))
     }
+	
+	private func unmaskAllFromTop(view: UIView, currentPath: UIBezierPath) {
+		let path = UIBezierPath(
+			rect: CGRect(
+				x: 0,
+				y: -view.frame.minY,
+				width: view.bounds.width,
+				height: view.frame.minY
+			)
+		)
+		currentPath.append(path)
+	}
 }
 
 // MARK: - Helper Extensions

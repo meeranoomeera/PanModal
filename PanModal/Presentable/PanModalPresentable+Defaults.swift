@@ -30,6 +30,10 @@ public extension PanModalPresentable where Self: UIViewController {
 		 .viewToViewOut
 		]
 	}
+	
+	var panContainerInsets: PanContainerInsets {
+		.none
+	}
 
     var topOffset: CGFloat {
         return topLayoutOffset + 21.0
