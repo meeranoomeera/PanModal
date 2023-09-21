@@ -130,6 +130,8 @@ open class PanModalPresentationController: UIPresentationController {
 			view.touchDelegate = presentable?.touchDelegate
         return view
     }()
+	
+	private lazy var overlayView = OverlayView()
 
     /**
      A wrapper around the presented view so that we can modify
@@ -218,6 +220,7 @@ open class PanModalPresentationController: UIPresentationController {
 		layoutVisibleView(in: containerView)
         configureScrollViewInsets()
 		setupKeyboardObserver()
+		layoutOverlayView(in: containerView)
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
             backgroundView.dimState = .max
@@ -234,6 +237,7 @@ open class PanModalPresentationController: UIPresentationController {
         if completed { return }
 
         backgroundView.removeFromSuperview()
+		overlayView.removeFromSuperview()
     }
 
     override public func dismissalTransitionWillBegin() {
@@ -346,6 +350,9 @@ public extension PanModalPresentationController {
         configureScrollViewInsets()
     }
 
+	func addViewToOverlay(view: UIView) {
+		overlayView.addSubview(view)
+	}
 }
 
 // MARK: - Presented View Layout Configuration
@@ -631,6 +638,29 @@ private extension PanModalPresentationController {
 			constant: insets.bottom
 		).isActive = true
     }
+	
+	func layoutOverlayView(in containerView: UIView) {
+		let insets = presentable?.panContainerInsets.insets ?? .zero
+		
+		containerView.addSubview(overlayView)
+		overlayView.translatesAutoresizingMaskIntoConstraints = false
+		overlayView.topAnchor.constraint(
+			equalTo: containerView.topAnchor,
+			constant: -insets.top
+		).isActive = true
+		overlayView.leadingAnchor.constraint(
+			equalTo: containerView.leadingAnchor,
+			constant: -insets.left
+		).isActive = true
+		overlayView.trailingAnchor.constraint(
+			equalTo: containerView.trailingAnchor,
+			constant: insets.right
+		).isActive = true
+		overlayView.bottomAnchor.constraint(
+			equalTo: containerView.bottomAnchor,
+			constant: insets.bottom
+		).isActive = true
+	}
 
 	func layoutVisibleView(in containerView: UIView) {
 		containerView.addSubview(visibleContainer)
