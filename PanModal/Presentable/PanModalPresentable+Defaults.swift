@@ -34,6 +34,10 @@ public extension PanModalPresentable where Self: UIViewController {
 	var panContainerInsets: PanContainerInsets {
 		.none
 	}
+	
+	var isPanScrollIndicatorVisible: Bool {
+		true
+	}
 
     var topOffset: CGFloat {
         return topLayoutOffset + 21.0

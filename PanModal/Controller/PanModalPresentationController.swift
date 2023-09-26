@@ -1119,7 +1119,7 @@ private extension PanModalPresentationController {
      */
     func trackScrolling(_ scrollView: UIScrollView) {
         scrollViewYOffset = max(scrollView.contentOffset.y, 0)
-        scrollView.showsVerticalScrollIndicator = true
+		scrollView.showsVerticalScrollIndicator = presentable?.isPanScrollIndicatorVisible ?? true
     }
 
     /**

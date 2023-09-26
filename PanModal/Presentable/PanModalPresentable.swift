@@ -38,6 +38,8 @@ public protocol PanModalPresentable: AnyObject {
 	
 	var panContainerInsets: PanContainerInsets { get }
 
+	var isPanScrollIndicatorVisible: Bool { get }
+
     /**
      The scroll view embedded in the view controller.
      Setting this value allows for seamless transition scrolling between the embedded scroll view
