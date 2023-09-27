@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		059F9B262ABCC75400F895B3 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F9B252ABCC75400F895B3 /* OverlayView.swift */; };
 		059F9B272ABCC8AB00F895B3 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F9B252ABCC75400F895B3 /* OverlayView.swift */; };
+		05D47FF62AC44A7700B19A77 /* PanModalUserInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D47FF52AC44A7700B19A77 /* PanModalUserInteraction.swift */; };
+		05D47FF72AC44A7700B19A77 /* PanModalUserInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D47FF52AC44A7700B19A77 /* PanModalUserInteraction.swift */; };
+		05D47FF92AC44C0400B19A77 /* ContainerWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D47FF82AC44C0400B19A77 /* ContainerWrapperView.swift */; };
+		05D47FFA2AC44C0400B19A77 /* ContainerWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D47FF82AC44C0400B19A77 /* ContainerWrapperView.swift */; };
 		05E0DBA22A97734D00A7AEA6 /* PanContainerInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */; };
 		05E0DBA32A97735700A7AEA6 /* PanContainerInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */; };
 		0F2A2C552239C119003BDB2F /* PanModal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F2A2C532239C119003BDB2F /* PanModal.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -140,6 +144,8 @@
 
 /* Begin PBXFileReference section */
 		059F9B252ABCC75400F895B3 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		05D47FF52AC44A7700B19A77 /* PanModalUserInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalUserInteraction.swift; sourceTree = "<group>"; };
+		05D47FF82AC44C0400B19A77 /* ContainerWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWrapperView.swift; sourceTree = "<group>"; };
 		05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanContainerInsets.swift; sourceTree = "<group>"; };
 		0F2A2C512239C119003BDB2F /* PanModal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanModal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2A2C532239C119003BDB2F /* PanModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanModal.h; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 				E7F42FED29EED61C00156953 /* PreviewTransitionOption.swift */,
 				E74A6E572935302500D9DEE9 /* DropWay.swift */,
 				05E0DBA12A97734D00A7AEA6 /* PanContainerInsets.swift */,
+				05D47FF52AC44A7700B19A77 /* PanModalUserInteraction.swift */,
 			);
 			path = Presentable;
 			sourceTree = "<group>";
@@ -409,6 +416,7 @@
 				E7C43D0129D47A3700201106 /* PreviewContainerView.swift */,
 				E7D573EB29E4340300E699EF /* PlayerView.swift */,
 				059F9B252ABCC75400F895B3 /* OverlayView.swift */,
+				05D47FF82AC44C0400B19A77 /* ContainerWrapperView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -702,6 +710,7 @@
 				0F2A2C602239C13C003BDB2F /* PanModalPresentationController.swift in Sources */,
 				0F2A2C612239C140003BDB2F /* PanModalPresentationDelegate.swift in Sources */,
 				FF4A4F9A2A260B66006860CC /* PanModalFormParameter.swift in Sources */,
+				05D47FF72AC44A7700B19A77 /* PanModalUserInteraction.swift in Sources */,
 				059F9B262ABCC75400F895B3 /* OverlayView.swift in Sources */,
 				FF4A4F972A25F71C006860CC /* PanModalShadow.swift in Sources */,
 				0F2A2C622239C148003BDB2F /* PanModalHeight.swift in Sources */,
@@ -720,6 +729,7 @@
 				E7C43D0229D47A3700201106 /* PreviewContainerView.swift in Sources */,
 				0F2A2C692239C162003BDB2F /* DimmedView.swift in Sources */,
 				E7F42FF029EED61D00156953 /* PreviewSizeOption.swift in Sources */,
+				05D47FFA2AC44C0400B19A77 /* ContainerWrapperView.swift in Sources */,
 				0F2A2C6A2239C165003BDB2F /* PanContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,11 +771,13 @@
 				943904ED2226366700859537 /* AlertViewController.swift in Sources */,
 				E7B4AE4529E03623000B6F02 /* PreviewItem.swift in Sources */,
 				FF4A4F962A25F71C006860CC /* PanModalShadow.swift in Sources */,
+				05D47FF62AC44A7700B19A77 /* PanModalUserInteraction.swift in Sources */,
 				FF4A4F9F2A26216D006860CC /* PanModalMixable.swift in Sources */,
 				E7B4AE4029DEF043000B6F02 /* GifTableViewCell.swift in Sources */,
 				E7D573ED29E4361100E699EF /* PlayerView.swift in Sources */,
 				05E0DBA32A97735700A7AEA6 /* PanContainerInsets.swift in Sources */,
 				E7EE4E07291E5E5100627C80 /* KeyboardPolicy.swift in Sources */,
+				05D47FF92AC44C0400B19A77 /* ContainerWrapperView.swift in Sources */,
 				743CABB22225FD1100634A5A /* UserGroupHeaderView.swift in Sources */,
 				DC139072216D9458007A3E64 /* PanModalPresentable+UIViewController.swift in Sources */,
 				DC139074216D9458007A3E64 /* PanModalPresentationController.swift in Sources */,

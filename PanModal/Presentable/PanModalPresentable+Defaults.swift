@@ -115,8 +115,8 @@ public extension PanModalPresentable where Self: UIViewController {
         return true
     }
 
-    var isUserInteractionEnabled: Bool {
-        return true
+    var isUserInteractionEnabled: PanModalUserInteraction {
+		return .fixed(true)
     }
 
 	var touchDelegate: UIView? {

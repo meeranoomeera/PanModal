@@ -198,7 +198,7 @@ public protocol PanModalPresentable: AnyObject {
 
      Default is true.
     */
-    var isUserInteractionEnabled: Bool { get }
+    var isUserInteractionEnabled: PanModalUserInteraction { get }
 
 	/**
 	 Pass touches from views outside to touch delegate (for passtrought touches)

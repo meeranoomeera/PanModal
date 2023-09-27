@@ -167,6 +167,10 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 	var pinnedView: UIView? {
 		bottomContainer
 	}
+	
+	var isUserInteractionEnabled: PanModalUserInteraction {
+		return .onlyWithPresentedView
+	}
 
 	var keyboardPolicy: KeyboardPolicy {
 		.switchToLongFormWithPinndedView(additionOffset: 0)

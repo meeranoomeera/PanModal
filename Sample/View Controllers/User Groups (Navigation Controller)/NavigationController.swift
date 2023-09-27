@@ -53,6 +53,10 @@ class NavigationController: UINavigationController, PanModalPresentable {
 	var panContainerInsets: PanContainerInsets {
 		return .custom(UIEdgeInsets(top: 50, left: 20, bottom: 20, right: 20))
 	}
+	
+	var isUserInteractionEnabled: PanModalUserInteraction {
+		return (topViewController as? PanModalPresentable)?.isUserInteractionEnabled ?? .fixed(true)
+	}
 }
 
 private class NavUserGroups: UserGroupViewController {

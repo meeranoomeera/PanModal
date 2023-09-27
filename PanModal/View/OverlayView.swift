@@ -22,4 +22,5 @@ public class OverlayView: UIView {
 		return nil
 	}
 }
+
 #endif
