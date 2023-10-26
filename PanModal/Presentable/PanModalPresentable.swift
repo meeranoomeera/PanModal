@@ -38,6 +38,10 @@ public protocol PanModalPresentable: AnyObject {
 	
 	var panContainerInsets: PanContainerInsets { get }
 
+	var isPanScrollIndicatorVisible: Bool { get }
+
+	var additionalScrollViewInsets: UIEdgeInsets { get }
+
     /**
      The scroll view embedded in the view controller.
      Setting this value allows for seamless transition scrolling between the embedded scroll view
@@ -196,7 +200,7 @@ public protocol PanModalPresentable: AnyObject {
 
      Default is true.
     */
-    var isUserInteractionEnabled: Bool { get }
+    var isUserInteractionEnabled: PanModalUserInteraction { get }
 
 	/**
 	 Pass touches from views outside to touch delegate (for passtrought touches)

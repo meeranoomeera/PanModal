@@ -34,6 +34,14 @@ public extension PanModalPresentable where Self: UIViewController {
 	var panContainerInsets: PanContainerInsets {
 		.none
 	}
+	
+	var isPanScrollIndicatorVisible: Bool {
+		true
+	}
+
+	var additionalScrollViewInsets: UIEdgeInsets {
+		.zero
+	}
 
     var topOffset: CGFloat {
         return topLayoutOffset + 21.0
@@ -111,8 +119,8 @@ public extension PanModalPresentable where Self: UIViewController {
         return true
     }
 
-    var isUserInteractionEnabled: Bool {
-        return true
+    var isUserInteractionEnabled: PanModalUserInteraction {
+		return .fixed(true)
     }
 
 	var touchDelegate: UIView? {

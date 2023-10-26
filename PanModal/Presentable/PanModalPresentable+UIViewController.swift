@@ -65,6 +65,9 @@ public extension PanModalPresentable where Self: UIViewController {
     func panModalAnimate(_ animationBlock: @escaping AnimationBlockType, _ completion: AnimationCompletionType? = nil) {
         PanModalAnimator.animate(animationBlock, config: self, completion)
     }
-
+	
+	func addViewToOverlay(view: UIView) {
+		presentedVC?.addViewToOverlay(view: view)
+	}
 }
 #endif
