@@ -217,6 +217,11 @@ open class PanModalPresentationController: UIPresentationController {
 		
 		guard let containerView = containerView
 		else { return }
+        
+        if panContainerView.frame == .zero {
+            adjustPresentedViewFrame()
+        }
+        
 		let insets = presentable?.panContainerInsets.insets ?? .zero
 		
 		containerView.frame = CGRect(
