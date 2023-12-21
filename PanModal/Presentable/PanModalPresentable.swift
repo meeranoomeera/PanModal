@@ -41,6 +41,8 @@ public protocol PanModalPresentable: AnyObject {
 	var isPanScrollIndicatorVisible: Bool { get }
 
 	var additionalScrollViewInsets: UIEdgeInsets { get }
+	
+	var panContainerBackgroundColor: UIColor? { get }
 
     /**
      The scroll view embedded in the view controller.

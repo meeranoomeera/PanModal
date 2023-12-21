@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-
+class ProfileViewController: UIViewController, PanModalPresentable {
     // MARK: - Properties
 
     let presentable: UserGroupMemberPresentable
@@ -53,7 +52,7 @@ class ProfileViewController: UIViewController {
     }
 
     // MARK: - View Lifecycle
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,6 +70,11 @@ class ProfileViewController: UIViewController {
         setupConstraints()
     }
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(false, animated: false)
+	}
+
     // MARK: - Layoutt
 
     func setupConstraints() {
@@ -86,5 +90,14 @@ class ProfileViewController: UIViewController {
         roleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         roleLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8.0).isActive = true
     }
+	
+	var panScrollable: UIScrollView? {
+		return nil
+	}
+	
+	var panContainerInsets: PanContainerInsets {
+		return .custom(UIEdgeInsets(top: 200, left: 20, bottom: 0, right: 20))
+	}
+
 }
 

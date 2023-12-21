@@ -157,7 +157,7 @@ open class PanModalPresentationController: UIPresentationController {
 	
 	private lazy var visibleContainer: UIView = {
 		let view = PassthroughView()
-		view.clipsToBounds = true
+		view.clipsToBounds = false
 		view.layer.cornerRadius = presentable?.cornerRadius ?? 0
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
@@ -217,19 +217,17 @@ open class PanModalPresentationController: UIPresentationController {
 		
 		guard let containerView = containerView
 		else { return }
-        
-        if panContainerView.frame == .zero {
-            adjustPresentedViewFrame()
-        }
-        
-		let insets = presentable?.panContainerInsets.insets ?? .zero
-		
+        		
 		containerView.frame = CGRect(
-			x: insets.left,
-			y: insets.top,
-			width: containerView.frame.width - insets.left - insets.right,
-			height: containerView.frame.height - insets.top - insets.bottom
+			x: 0,
+			y: 0,
+			width: containerView.frame.width,
+			height: containerView.frame.height
 		)
+		
+		if panContainerView.frame == .zero {
+			adjustPresentedViewFrame()
+		}
 		
 		layoutBackgroundView(in: containerView)
 		layoutPresentedView(in: containerView)
@@ -568,7 +566,7 @@ private extension PanModalPresentationController {
 		guard let frame = containerView?.frame
 		else { return }
 		
-		let adjustedSize = CGSize(width: frame.size.width, height: frame.size.height - anchoredYPosition)
+		var adjustedSize = CGSize(width: frame.size.width, height: frame.size.height - anchoredYPosition)
 		let panFrame = panContainerView.frame
 		panContainerView.frame.size = frame.size
 		
@@ -590,7 +588,15 @@ private extension PanModalPresentationController {
 				- Constants.previewContainerBottomSpacing
 			)
 		)
-		presentedViewController.view.frame = CGRect(origin: .zero, size: adjustedSize)
+		
+		let insets = presentable?.panContainerInsets.insets ?? .zero
+		
+		adjustedSize.width = adjustedSize.width - insets.left - insets.right
+		adjustedSize.height = adjustedSize.height - insets.top - insets.bottom
+		
+		presentedViewController.view.frame = CGRect(origin: .init(x: insets.left, y: insets.top), size: adjustedSize)
+		presentedViewController.view.layer.cornerRadius = presentable?.cornerRadius ?? .zero
+		presentedViewController.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 	}
 	
 	/**
@@ -599,7 +605,8 @@ private extension PanModalPresentationController {
 	 during initial view presentation in longForm (when view bounces)
 	 */
 	func adjustPanContainerBackgroundColor() {
-		panContainerView.backgroundColor = presentedViewController.view.backgroundColor
+		panContainerView.backgroundColor = presentable?.panContainerBackgroundColor
+		?? presentedViewController.view.backgroundColor
 		?? presentable?.panScrollable?.backgroundColor
 	}
 	
@@ -634,48 +641,36 @@ private extension PanModalPresentationController {
 	 & configures its layout constraints.
 	 */
 	func layoutBackgroundView(in containerView: UIView) {
-		let insets = presentable?.panContainerInsets.insets ?? .zero
-		
 		containerView.addSubview(backgroundView)
 		backgroundView.translatesAutoresizingMaskIntoConstraints = false
 		backgroundView.topAnchor.constraint(
-			equalTo: containerView.topAnchor,
-			constant: -insets.top
+			equalTo: containerView.topAnchor
 		).isActive = true
 		backgroundView.leadingAnchor.constraint(
-			equalTo: containerView.leadingAnchor,
-			constant: -insets.left
+			equalTo: containerView.leadingAnchor
 		).isActive = true
 		backgroundView.trailingAnchor.constraint(
-			equalTo: containerView.trailingAnchor,
-			constant: insets.right
+			equalTo: containerView.trailingAnchor
 		).isActive = true
 		backgroundView.bottomAnchor.constraint(
-			equalTo: containerView.bottomAnchor,
-			constant: insets.bottom
+			equalTo: containerView.bottomAnchor
 		).isActive = true
 	}
 	
 	func layoutOverlayView(in containerView: UIView) {
-		let insets = presentable?.panContainerInsets.insets ?? .zero
-		
 		containerView.addSubview(overlayView)
 		overlayView.translatesAutoresizingMaskIntoConstraints = false
 		overlayView.topAnchor.constraint(
-			equalTo: containerView.topAnchor,
-			constant: -insets.top
+			equalTo: containerView.topAnchor
 		).isActive = true
 		overlayView.leadingAnchor.constraint(
-			equalTo: containerView.leadingAnchor,
-			constant: -insets.left
+			equalTo: containerView.leadingAnchor
 		).isActive = true
 		overlayView.trailingAnchor.constraint(
-			equalTo: containerView.trailingAnchor,
-			constant: insets.right
+			equalTo: containerView.trailingAnchor
 		).isActive = true
 		overlayView.bottomAnchor.constraint(
-			equalTo: containerView.bottomAnchor,
-			constant: insets.bottom
+			equalTo: containerView.bottomAnchor
 		).isActive = true
 	}
 	
@@ -907,6 +902,12 @@ private extension PanModalPresentationController {
 	 Communicate intentions to presentable and adjust subviews in containerView
 	 */
 	func respond(to panGestureRecognizer: UIPanGestureRecognizer) {
+		let loc = panGestureRecognizer.location(in: presentedView)
+		
+		guard presentedViewController.view.frame.contains(loc) else {
+			return
+		}
+		
 		presentable?.willRespond(to: panGestureRecognizer)
 		
 		var yDisplacement = panGestureRecognizer.translation(in: presentedView).y
@@ -956,6 +957,7 @@ private extension PanModalPresentationController {
 		}
 		
 		let loc = panGestureRecognizer.location(in: presentedView)
+
 		let scrollRelativeFrame = scrollView.convert(scrollView.bounds, to: presentedView)
 		return (scrollRelativeFrame.contains(loc) || scrollView.isScrolling)
 	}

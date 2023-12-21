@@ -42,6 +42,10 @@ public extension PanModalPresentable where Self: UIViewController {
 	var additionalScrollViewInsets: UIEdgeInsets {
 		.zero
 	}
+	
+	var panContainerBackgroundColor: UIColor? {
+		nil
+	}
 
     var topOffset: CGFloat {
         return topLayoutOffset + 21.0
