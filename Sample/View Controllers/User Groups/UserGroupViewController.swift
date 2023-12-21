@@ -150,14 +150,18 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 	var longFormHeight: PanModalHeight {
 		.maxHeight
 	}
-	
-	var panContainerInsets: PanContainerInsets {
-		return .custom(UIEdgeInsets(top: 50, left: 20, bottom: 0, right: 20))
-	}
 
 	var scrollIndicatorInsets: UIEdgeInsets {
 		let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
 		return UIEdgeInsets(top: headerView.frame.size.height, left: 0, bottom: bottomOffset, right: 0)
+	}
+	
+	var panModalBackgroundColor: UIColor {
+		return .clear
+	}
+	
+	var panContainerInsets: PanContainerInsets {
+		return .custom(UIEdgeInsets(top: 50, left: 20, bottom: 0, right: 20))
 	}
 
 	var anchorModalToLongForm: Bool {
