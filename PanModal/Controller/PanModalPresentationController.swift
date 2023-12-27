@@ -68,7 +68,12 @@ open class PanModalPresentationController: UIPresentationController {
 	 A flag to track if the presented view is animating
 	 */
 	private var isPresentedViewAnimating = false
-	
+
+	/**
+	 A flag to track if the presented view is dismissing
+	 */
+	private var isPresentedViewDismissing = false
+
 	/**
 	 A flag to determine if scrolling should seamlessly transition
 	 from the pan modal container view to the scroll view
@@ -257,7 +262,8 @@ open class PanModalPresentationController: UIPresentationController {
 	
 	override public func dismissalTransitionWillBegin() {
 		presentable?.panModalWillDismiss()
-		
+		isPresentedViewDismissing = true
+
 		guard let coordinator = presentedViewController.transitionCoordinator else {
 			backgroundView.dimState = .off
 			return
@@ -278,6 +284,7 @@ open class PanModalPresentationController: UIPresentationController {
 		if !completed { return }
 		presentable?.panModalDidDismiss()
 		containerWrapperView.removeFromSuperview()
+		isPresentedViewDismissing = false
 	}
 	
 	/**
@@ -769,6 +776,10 @@ private extension PanModalPresentationController {
 			}
 			switch event.type {
 			case .willShow:
+				guard !self.isPresentedViewDismissing else {
+					return
+				}
+
 				switch presentable.keyboardPolicy {
 				case .switchToLongForm:
 					self.transition(to: .longForm)
