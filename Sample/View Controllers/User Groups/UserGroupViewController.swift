@@ -65,6 +65,7 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		view.clipsToBounds = true
 		tableView.dataSource = self
 		tableView.delegate = self
 
@@ -141,8 +142,6 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 		return tableView
 	}
 
-
-
 	var shortFormHeight: PanModalHeight {
 		return isShortFormEnabled ? .contentHeight(300.0) : longFormHeight
 	}
@@ -191,6 +190,14 @@ class UserGroupViewController: UIViewController, UITableViewDataSource, UITableV
 
 		isShortFormEnabled = false
 		panModalSetNeedsLayoutUpdate()
+	}
+	
+	var panContainerBackgroundColor: UIColor? {
+		return .clear
+	}
+	
+	var cornerRadius: CGFloat {
+		12
 	}
 
 }
