@@ -736,6 +736,7 @@ private extension PanModalPresentationController {
 		
 		guard
 			let scrollView = presentable?.panScrollable,
+			let view = presentingViewController.view,
 			!scrollView.isScrolling
 		else { return }
 		
@@ -751,11 +752,20 @@ private extension PanModalPresentationController {
 		 offsets it
 		 */
 		
+		let bottomInset: CGFloat
+		
+		if #available(iOS 11.0, *) {
+			let window = UIApplication.shared.keyWindow
+			bottomInset = window?.safeAreaInsets.bottom ?? 0
+		} else {
+			bottomInset = presentingViewController.bottomLayoutGuide.length
+		}
+						
 		let additionalInsets = presentable?.additionalScrollViewInsets ?? .zero
 		scrollView.contentInset = UIEdgeInsets(
 			top: additionalInsets.top,
 			left: additionalInsets.left,
-			bottom: presentingViewController.bottomLayoutGuide.length + additionalInsets.bottom,
+			bottom: bottomInset + additionalInsets.bottom,
 			right: additionalInsets.right
 		)
 		
