@@ -736,6 +736,7 @@ private extension PanModalPresentationController {
 		
 		guard
 			let scrollView = presentable?.panScrollable,
+			let view = presentingViewController.view,
 			!scrollView.isScrolling
 		else { return }
 		
@@ -751,11 +752,20 @@ private extension PanModalPresentationController {
 		 offsets it
 		 */
 		
+		let bottomInset: CGFloat
+		
+		if #available(iOS 11.0, *) {
+			let window = UIApplication.shared.keyWindow
+			bottomInset = window?.safeAreaInsets.bottom ?? 0
+		} else {
+			bottomInset = presentingViewController.bottomLayoutGuide.length
+		}
+						
 		let additionalInsets = presentable?.additionalScrollViewInsets ?? .zero
 		scrollView.contentInset = UIEdgeInsets(
 			top: additionalInsets.top,
 			left: additionalInsets.left,
-			bottom: presentingViewController.bottomLayoutGuide.length + additionalInsets.bottom,
+			bottom: bottomInset + additionalInsets.bottom,
 			right: additionalInsets.right
 		)
 		
@@ -1241,9 +1251,7 @@ private extension PanModalPresentationController {
 			let indicatorLeftEdgeXPos = view.bounds.width/2.0 - Constants.dragIndicatorSize.width/2.0
 			drawAroundDragIndicator(currentPath: path, indicatorLeftEdgeXPos: indicatorLeftEdgeXPos)
 		}
-		
-		unmaskAllFromTop(view: view, currentPath: path)
-		
+				
 		// Set path as a mask to display optional drag indicator view & rounded corners
 		let mask = CAShapeLayer()
 		mask.path = path.cgPath
@@ -1266,18 +1274,6 @@ private extension PanModalPresentationController {
 		path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y - totalIndicatorOffset))
 		path.addLine(to: CGPoint(x: path.currentPoint.x + (presentable?.dragIndicatorSize.width ?? Constants.dragIndicatorSize.width), y: path.currentPoint.y))
 		path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y + totalIndicatorOffset))
-	}
-	
-	private func unmaskAllFromTop(view: UIView, currentPath: UIBezierPath) {
-		let path = UIBezierPath(
-			rect: CGRect(
-				x: 0,
-				y: -view.frame.minY,
-				width: view.bounds.width,
-				height: view.frame.minY
-			)
-		)
-		currentPath.append(path)
 	}
 	
 	private func wrapInWrapperContainerIfNeeded() {

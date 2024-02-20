@@ -59,7 +59,7 @@ class NavigationController: UINavigationController, PanModalPresentable {
 	}
 	
 	var panContainerBackgroundColor: UIColor? {
-		return .clear
+		childPanPresentable?.panContainerBackgroundColor
 	}
 	
 	var isUserInteractionEnabled: PanModalUserInteraction {
