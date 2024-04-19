@@ -34,19 +34,7 @@ open class PanModalPresentationController: UIPresentationController {
 		case shortForm
 		case longForm
 	}
-	
-	private var containerWrapperView = ContainerWrapperView(frame: UIScreen.main.bounds)
-	
-	open override var containerView: UIView? {
-		guard containerWrapperView.superview == nil
-				|| presentedViewController.isBeingDismissed
-		else {
-			return super.containerView
-		}
-		wrapInWrapperContainerIfNeeded()
-		return super.containerView
-	}
-	
+
 	/**
 	 Constants
 	 */
@@ -127,6 +115,8 @@ open class PanModalPresentationController: UIPresentationController {
 	}
 	
 	// MARK: - Views
+	
+	private lazy var containerWrapperView = ContainerWrapperView()
 	
 	/**
 	 Background view used as an overlay over the presenting view
@@ -234,6 +224,7 @@ open class PanModalPresentationController: UIPresentationController {
 			adjustPresentedViewFrame()
 		}
 		
+		wrapContainerView()
 		layoutBackgroundView(in: containerView)
 		layoutPresentedView(in: containerView)
 		layoutPreviewView(in: containerView)
@@ -1275,20 +1266,32 @@ private extension PanModalPresentationController {
 		path.addLine(to: CGPoint(x: path.currentPoint.x + (presentable?.dragIndicatorSize.width ?? Constants.dragIndicatorSize.width), y: path.currentPoint.y))
 		path.addLine(to: CGPoint(x: path.currentPoint.x, y: path.currentPoint.y + totalIndicatorOffset))
 	}
-	
-	private func wrapInWrapperContainerIfNeeded() {
+
+	private func wrapContainerView() {
 		guard let containerView = super.containerView,
-			  let superView = containerView.superview,
-			  superView != containerWrapperView,
-			  let index = superView.subviews.firstIndex(of: containerView)
+			  let containerSuperview = containerView.superview,
+			  let index = containerSuperview.subviews.firstIndex(of: containerView),
+			  containerSuperview != containerWrapperView
 		else {
 			return
 		}
-		
-		super.containerView?.removeFromSuperview()
-		superView.insertSubview(containerWrapperView, at: index)
+
+		containerView.removeFromSuperview()
+
+		containerSuperview.insertSubview(containerWrapperView, at: index)
+		containerWrapperView.translatesAutoresizingMaskIntoConstraints = false
+		containerWrapperView.topAnchor.constraint(equalTo: containerSuperview.topAnchor).isActive = true
+		containerWrapperView.bottomAnchor.constraint(equalTo: containerSuperview.bottomAnchor).isActive = true
+		containerWrapperView.leadingAnchor.constraint(equalTo: containerSuperview.leadingAnchor).isActive = true
+		containerWrapperView.trailingAnchor.constraint(equalTo: containerSuperview.trailingAnchor).isActive = true
+
 		containerWrapperView.addSubview(containerView)
-		
+		containerView.translatesAutoresizingMaskIntoConstraints = false
+		containerView.topAnchor.constraint(equalTo: containerWrapperView.topAnchor).isActive = true
+		containerView.bottomAnchor.constraint(equalTo: containerWrapperView.bottomAnchor).isActive = true
+		containerView.leadingAnchor.constraint(equalTo: containerWrapperView.leadingAnchor).isActive = true
+		containerView.trailingAnchor.constraint(equalTo: containerWrapperView.trailingAnchor).isActive = true
+
 		containerWrapperView.isTouchPossible = { [weak self, weak containerView, weak presentable] point, event in
 			guard let self, let containerView, let presentable else {
 				return true
